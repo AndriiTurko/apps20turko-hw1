@@ -160,7 +160,7 @@ public class TemperatureSeriesAnalysisTest {
         double expResult = -1.0;
 
         // call tested method
-        double actualResult = seriesAnalysisOneEl.closestValue();
+        double actualResult = seriesAnalysisOneEl.closestValue(2.0);
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
@@ -234,29 +234,29 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempLessThenWithOneElementArray() {
+    public void testFindTempsLessThenWithOneElementArray() {
         double[] temperatureSeries = {-1.0};
         TemperatureSeriesAnalysis seriesAnalysisOneEl = new TemperatureSeriesAnalysis(temperatureSeries);
         double[] expResult = {-1.0};
 
         // call tested method
-        double actualResult = seriesAnalysisOneEl.findTempLessThen(0.0);
+        double actualResult = seriesAnalysisOneEl.findTempsLessThen(1.0);
 
         // compare expected result with actual result
         assertEquals(Arrays.toString(expResult), Arrays.toString(actualResult), 0.00001);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testFindTempLessThenWithEmptyArray() {
+    public void testFindTempsLessThenWithEmptyArray() {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysisEmpty = new TemperatureSeriesAnalysis(temperatureSeries);
 
         // expect exception here
-        seriesAnalysisEmpty.findTempLessThen(2.0);
+        seriesAnalysisEmpty.findTempsLessThen(2.0);
     }
 
     @Test
-    public void testFindTempLessThen() {
+    public void testFindTempsLessThen() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double[] expResult = {-5.0};
@@ -267,29 +267,29 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempGreaterThenWithOneElementArray() {
+    public void testFindTempsGreaterThenWithOneElementArray() {
         double[] temperatureSeries = {1.0};
         TemperatureSeriesAnalysis seriesAnalysisOneEl = new TemperatureSeriesAnalysis(temperatureSeries);
         double[] expResult = {1.0};
 
         // call tested method
-        double actualResult = seriesAnalysisOneEl.findTempGreaterThen(0.0);
+        double actualResult = seriesAnalysisOneEl.findTempsGreaterThen(0.0);
 
         // compare expected result with actual result
         assertEquals(Arrays.toString(expResult), Arrays.toString(actualResult), 0.00001);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testFindTempGreaterThenWithEmptyArray() {
+    public void testFindTempsGreaterThenWithEmptyArray() {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysisEmpty = new TemperatureSeriesAnalysis(temperatureSeries);
 
         // expect exception here
-        seriesAnalysisEmpty.findTempGreaterThen(2.0);
+        seriesAnalysisEmpty.findTempsGreaterThen(2.0);
     }
 
     @Test
-    public void testFindTempGreaterThen() {
+    public void testFindTempsGreaterThen() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double[] expResult = {3.0, 5.0};
@@ -307,7 +307,6 @@ public class TemperatureSeriesAnalysisTest {
         double expResult = 3;
 
         // call tested method
-        seriesAnalysisOneEl.addTemps(temperatureAddSeries);
         double actualResult = seriesAnalysisOneEl.addTemps(temperatureAddSeries);
 
         // compare expected result with actual result
@@ -322,7 +321,6 @@ public class TemperatureSeriesAnalysisTest {
         double expResult = 2;
 
         // call tested method
-        seriesAnalysisOneEl.addTemps(temperatureAddSeries);
         double actualResult = seriesAnalysisOneEl.addTemps(temperatureAddSeries);
 
         // compare expected result with actual result
