@@ -153,14 +153,14 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testClosestValueWithOneElementArray() {
+    public void testFindTempClosestValueWithOneElementArray() {
         // setup input data and expected result
         double[] temperatureSeries = {-1.0};
         TemperatureSeriesAnalysis seriesAnalysisOneEl = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = -1.0;
 
         // call tested method
-        double actualResult = seriesAnalysisOneEl.closestValue(2.0);
+        double actualResult = seriesAnalysisOneEl.findTempClosestToValue(2.0);
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
@@ -304,10 +304,10 @@ public class TemperatureSeriesAnalysisTest {
         double[] temperatureSeries = {1.0};
         TemperatureSeriesAnalysis seriesAnalysisOneEl = new TemperatureSeriesAnalysis(temperatureSeries);
         double[] temperatureAddSeries = {2.0, 3.0};
-        double expResult = 3;
+        int expResult = 3;
 
         // call tested method
-        double actualResult = seriesAnalysisOneEl.addTemps(temperatureAddSeries);
+        int actualResult = seriesAnalysisOneEl.addTemps(temperatureAddSeries);
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
@@ -318,10 +318,10 @@ public class TemperatureSeriesAnalysisTest {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysisEmpty = new TemperatureSeriesAnalysis(temperatureSeries);
         double[] temperatureAddSeries = {2.0, 3.0};
-        double expResult = 2;
+        int expResult = 2;
 
         // call tested method
-        double actualResult = seriesAnalysisOneEl.addTemps(temperatureAddSeries);
+        int actualResult = seriesAnalysisEmpty.addTemps(temperatureAddSeries);
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
@@ -335,10 +335,10 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
         double[] temperatureAddSeries = {-1.0, 5.0};
 
-        double expResult = 5;
+        int expResult = 5;
 
         // call tested method
-        double actualResult = seriesAnalysis.addTemps(temperatureAddSeries);
+        int actualResult = seriesAnalysis.addTemps(temperatureAddSeries);
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
