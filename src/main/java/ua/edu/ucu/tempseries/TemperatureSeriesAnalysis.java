@@ -18,7 +18,7 @@ public class TemperatureSeriesAnalysis {
     public double average() {
         checkEmpty();
         double sum = 0;
-        for (double temp: temperatures){
+        for (double temp: temperatures) {
             sum += temp;
         }
         return sum/temperatures.length;
@@ -28,7 +28,7 @@ public class TemperatureSeriesAnalysis {
         checkEmpty();
         double mean = average();
         double dev = 0;
-        for (double temp: temperatures){
+        for (double temp: temperatures) {
             dev += Math.pow(mean - temp, 2);
         }
         dev /= temperatures.length;
@@ -54,9 +54,9 @@ public class TemperatureSeriesAnalysis {
         checkEmpty();
         double closestDistance = 600;
         double closestValue = 0;
-        for (double temp: temperatures){
+        for (double temp: temperatures) {
             double check = Math.abs(temp - tempValue);
-            if (check < closestDistance){
+            if (check < closestDistance) {
                 closestDistance = check;
                 closestValue = temp;
             }
@@ -66,9 +66,11 @@ public class TemperatureSeriesAnalysis {
 
     public double[] findTempsLessThen(double tempValue) {
         int i = 0;
-        while(temperatures[i] < tempValue){ i++; }
+        while (temperatures[i] < tempValue) {
+            i++;
+        }
         double[] result = new double[i];
-        for(int j = 0; j < i; j++){
+        for (int j = 0; j < i; j++) {
             result[j] = temperatures[j];
         }
         return result;
@@ -76,7 +78,7 @@ public class TemperatureSeriesAnalysis {
 
     public double[] findTempsGreaterThen(double tempValue) {
         int i = 0;
-        while(temperatures[i] < tempValue){ i++; }
+        while (temperatures[i] < tempValue) { i++; }
         if (temperatures[i] == tempValue){
             i++;
         }
@@ -99,7 +101,7 @@ public class TemperatureSeriesAnalysis {
         System.arraycopy(temps, 0, temp_arr, 0, arr1_size);
         System.arraycopy(temperatures, 0, temp_arr, arr1_size, arr2_size);
         temperatures = Arrays.stream(temp_arr).sorted().toArray();
-        return 0;
+        return temperatures.length;
     }
 
     private void checkEmpty(){
