@@ -371,7 +371,7 @@ public class TemperatureSeriesAnalysisTest {
         double expResult = 3;
 
         // call tested method
-        seriesAnalysisOneEl.addTemps(temperatureAddSeries)
+        seriesAnalysisOneEl.addTemps(temperatureAddSeries);
         double actualResult = seriesAnalysisOneEl.addTemps(temperatureAddSeries);
 
         // compare expected result with actual result
@@ -386,7 +386,7 @@ public class TemperatureSeriesAnalysisTest {
         double expResult = 2;
 
         // call tested method
-        seriesAnalysisOneEl.addTemps(temperatureAddSeries)
+        seriesAnalysisOneEl.addTemps(temperatureAddSeries);
         double actualResult = seriesAnalysisOneEl.addTemps(temperatureAddSeries);
 
         // compare expected result with actual result
