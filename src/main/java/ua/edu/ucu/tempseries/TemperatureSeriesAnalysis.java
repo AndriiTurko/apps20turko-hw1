@@ -11,7 +11,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        check273(temperatureSeries);
+        checkMinTemp(temperatureSeries);
         temperatures = Arrays.stream(temperatureSeries).sorted().toArray();
     }
 
@@ -79,11 +79,11 @@ public class TemperatureSeriesAnalysis {
     public double[] findTempsGreaterThen(double tempValue) {
         int i = 0;
         while (temperatures[i] < tempValue) { i++; }
-        if (temperatures[i] == tempValue){
+        if (temperatures[i] == tempValue) {
             i++;
         }
         double[] result = new double[temperatures.length - i];
-        for (int j = i; j < temperatures.length; j++){
+        for (int j = i; j < temperatures.length; j++) {
             result[j-i] = temperatures[j];
         }
         return result;
@@ -94,25 +94,25 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        check273(temps);
-        int arr1_size = temps.length;
-        int arr2_size = temperatures.length;
-        double[] temp_arr = new double[arr1_size + arr2_size];
-        System.arraycopy(temps, 0, temp_arr, 0, arr1_size);
-        System.arraycopy(temperatures, 0, temp_arr, arr1_size, arr2_size);
-        temperatures = Arrays.stream(temp_arr).sorted().toArray();
+        checkMinTemp(temps);
+        int arr1Size = temps.length;
+        int arr2Size = temperatures.length;
+        double[] tempArr = new double[arr1Size + arr2Size];
+        System.arraycopy(temps, 0, tempArr, 0, arr1Size);
+        System.arraycopy(temperatures, 0, tempArr, arr1Size, arr2Size);
+        temperatures = Arrays.stream(tempArr).sorted().toArray();
         return temperatures.length;
     }
 
-    private void checkEmpty(){
-        if (temperatures.length == 0){
+    private void checkEmpty() {
+        if (temperatures.length == 0) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void check273(double[] temps){
-        for (double temp: temps){
-            if (temp < -273){
+    private void checkMinTemp(double[] temps) {
+        for (double temp: temps) {
+            if (temp < -273) {
                 throw new InputMismatchException();
             }
         }
