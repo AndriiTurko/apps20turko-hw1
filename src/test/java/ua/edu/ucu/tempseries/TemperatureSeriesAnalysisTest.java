@@ -240,7 +240,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] expResult = {-1.0};
 
         // call tested method
-        double actualResult = seriesAnalysisOneEl.findTempsLessThen(1.0);
+        double[] actualResult = seriesAnalysisOneEl.findTempsLessThen(1.0);
 
         // compare expected result with actual result
         assertEquals(Arrays.toString(expResult), Arrays.toString(actualResult), 0.00001);
@@ -273,7 +273,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] expResult = {1.0};
 
         // call tested method
-        double actualResult = seriesAnalysisOneEl.findTempsGreaterThen(0.0);
+        double[] actualResult = seriesAnalysisOneEl.findTempsGreaterThen(0.0);
 
         // compare expected result with actual result
         assertEquals(Arrays.toString(expResult), Arrays.toString(actualResult), 0.00001);
@@ -302,7 +302,7 @@ public class TemperatureSeriesAnalysisTest {
     @Test
     public void testAddTempsWithOneElementArray() {
         double[] temperatureSeries = {1.0};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TemperatureSeriesAnalysis seriesAnalysisOneEl = new TemperatureSeriesAnalysis(temperatureSeries);
         double[] temperatureAddSeries = {2.0, 3.0};
         double expResult = 3;
 
@@ -333,12 +333,12 @@ public class TemperatureSeriesAnalysisTest {
         // setup input data and expected result
         double[] temperatureSeries = {-1.0, 1.0, 3.7};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
-        double[] temperatureSeries = {-1.0, 5.0};
+        double[] temperatureAddSeries = {-1.0, 5.0};
 
         double expResult = 5;
 
         // call tested method
-        double actualResult = seriesAnalysis.addTemps(temperatureSeries);
+        double actualResult = seriesAnalysis.addTemps(temperatureAddSeries);
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, 0.00001);
